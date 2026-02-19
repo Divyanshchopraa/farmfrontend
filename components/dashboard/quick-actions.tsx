@@ -28,7 +28,7 @@ export function QuickActions() {
   return (
     <section aria-label="Quick actions">
       <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-3">
-        Quick Actions
+        
       </h3>
       <div className="flex flex-col gap-3">
         {actions.map((action) => (

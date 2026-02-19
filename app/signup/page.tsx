@@ -2,11 +2,16 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import {useRouter} from "next/navigation"
+
+
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 export default function SignupPage() {
   const [form, setForm] = useState({ name: "", email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
+  const router = useRouter()
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -221,6 +226,7 @@ export default function SignupPage() {
             <button
               type="submit"
               disabled={loading}
+              onClick={() => {sleep(3000).then(()=>{console.log('a')})  ;router.push("/")}}
               className="w-full py-4 rounded-xl text-sm font-semibold text-white transition-all duration-200 mt-2 relative overflow-hidden"
               style={{
                 backgroundColor: loading ? "#5BA87C" : "#1F7A4D",

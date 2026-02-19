@@ -15,7 +15,7 @@ export default function ProfilePage() {
   const [isEditing, setIsEditing] = useState(false);
 
   const [profile, setProfile] = useState({
-    name: "john doe",
+    name: "Krish Sharma",
     email: "abc@farmcare.in",
     phone: "+91 98765 43625",
   });
@@ -323,55 +323,6 @@ export default function ProfilePage() {
               </button>
             </div>
           )}
-        </div>
-
-        {/* ── App Activity History ── */}
-        <div className="bg-white rounded-2xl shadow-md px-6 py-6">
-          <div className="flex items-center gap-2 mb-5">
-            <span className="text-base">🕐</span>
-            <h2 className="text-sm font-bold uppercase tracking-wide" style={{ color: "#1F3D2B" }}>
-              Recent Activity
-            </h2>
-          </div>
-          <div className="space-y-3">
-            {ACTIVITY_HISTORY.map((item, idx) => (
-              <div
-                key={item.id}
-                className="flex items-center gap-3 rounded-xl px-4 py-3 transition-all duration-150"
-                style={{
-                  backgroundColor: "#F8FAF8",
-                  border: "1.5px solid #E5EDE6",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = "#E8F5EE";
-                  e.currentTarget.style.borderColor = "#A8D9BC";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = "#F8FAF8";
-                  e.currentTarget.style.borderColor = "#E5EDE6";
-                }}
-              >
-                {/* Timeline dot */}
-                <div className="flex flex-col items-center self-stretch">
-                  <div
-                    className="w-8 h-8 rounded-full flex items-center justify-center text-sm flex-shrink-0"
-                    style={{ backgroundColor: "#E8F5EE" }}
-                  >
-                    {item.icon}
-                  </div>
-                  {idx < ACTIVITY_HISTORY.length - 1 && (
-                    <div className="w-px flex-1 mt-1" style={{ backgroundColor: "#D8EAD8" }} />
-                  )}
-                </div>
-                <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium leading-snug" style={{ color: "#1F3D2B" }}>
-                    {item.action}
-                  </p>
-                  <p className="text-xs mt-0.5" style={{ color: "#9DB89E" }}>{item.time}</p>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
 
         {/* ── Sign Out ── */}

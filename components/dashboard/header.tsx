@@ -1,17 +1,22 @@
+"use client"
 import { Bell, User } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { useRouter } from "next/navigation"
+
 
 export function Header() {
+  const router = useRouter()  
   return (
     <header className="flex items-center justify-between px-5 py-4">
       <div>
-        <h1 className="text-xl font-bold text-foreground tracking-tight flex items-center gap-2">
-          <span className="text-2xl" role="img" aria-label="wheat">{"🌾"}</span>
-          Farm Care
-        </h1>
-        <p className="text-sm text-muted-foreground mt-0.5">
-          Crop health assistant
-        </p>
+<h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight 
+               bg-gradient-to-r from-green-400 via-emerald-500 to-lime-400 
+               bg-clip-text text-transparent 
+               flex items-center gap-3">
+  Farm Care  
+</h1>
+
+
       </div>
       <div className="flex items-center gap-2">
         <Button
@@ -21,14 +26,6 @@ export function Header() {
           aria-label="Notifications"
         >
           <Bell className="size-5" />
-        </Button>
-        <Button
-          variant="ghost"
-          size="icon"
-          className="rounded-full bg-primary/10 text-primary hover:bg-primary/20"
-          aria-label="Profile"
-        >
-          <User className="size-5" />
         </Button>
       </div>
     </header>
