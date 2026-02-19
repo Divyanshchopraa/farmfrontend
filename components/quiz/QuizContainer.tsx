@@ -1,62 +1,59 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { quizQuestions } from "@/lib/quizData";
+import { quizQuestions, Question } from "@/lib/quizData";
 import QuestionCard from "./QuestionCard";
-import ResultCard from "./ResultCard";
 
 export default function QuizContainer() {
-  const [selectedQuestions, setSelectedQuestions] = useState<any[]>([]);
-  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [selectedQuestions, setSelectedQuestions] = useState<Question[]>([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [showResult, setShowResult] = useState(false);
 
-  // ✅ Run randomization only on client after mount
+  // Shuffle + pick 3 questions (client side)
   useEffect(() => {
     const shuffled = [...quizQuestions]
-      .sort(() => 0.5 - Math.random())
+      .sort(() => Math.random() - 0.5)
       .slice(0, 3);
 
     setSelectedQuestions(shuffled);
   }, []);
 
   const handleAnswer = (selectedOption: string) => {
-    if (selectedOption === selectedQuestions[currentQuestion].answer) {
-      setScore(prev => prev + 1);
+    if (selectedOption === selectedQuestions[currentIndex].answer) {
+      setScore((prev) => prev + 1);
     }
 
-    const nextQuestion = currentQuestion + 1;
+    const next = currentIndex + 1;
 
-    if (nextQuestion < selectedQuestions.length) {
-      setCurrentQuestion(nextQuestion);
+    if (next < selectedQuestions.length) {
+      setCurrentIndex(next);
     } else {
       setShowResult(true);
     }
   };
 
-  const restartQuiz = () => {
-    window.location.reload();
-  };
-
-  // ⛔ Prevent rendering before questions are ready
   if (selectedQuestions.length === 0) return null;
 
   return (
-    <div className="w-full max-w-md bg-white shadow-lg rounded-lg p-6">
-      {showResult ? (
-        <ResultCard
-          score={score}
-          total={selectedQuestions.length}
-          restart={restartQuiz}
-        />
-      ) : (
-        <QuestionCard
-          questionData={selectedQuestions[currentQuestion]}
-          questionNumber={currentQuestion + 1}
-          totalQuestions={selectedQuestions.length}
-          onAnswer={handleAnswer}
-        />
-      )}
+    <div className="min-h-screen bg-green-100 flex items-center justify-center p-4">
+      <div className="bg-white w-full max-w-md p-6 rounded-lg shadow-lg">
+        {showResult ? (
+          <div className="text-center">
+            <h2 className="text-xl font-bold mb-4">Quiz Completed 🌾</h2>
+            <p className="text-lg">
+              Your Score: {score} / {selectedQuestions.length}
+            </p>
+          </div>
+        ) : (
+          <QuestionCard
+            questionData={selectedQuestions[currentIndex]}
+            questionNumber={currentIndex + 1}
+            totalQuestions={selectedQuestions.length}
+            onAnswer={handleAnswer}
+          />
+        )}
+      </div>
     </div>
   );
 }

@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import type { Question } from "@/lib/quizData";
 
-type QuestionCardProps = {
+type Props = {
   questionData: Question;
   questionNumber: number;
   totalQuestions: number;
@@ -15,7 +15,7 @@ export default function QuestionCard({
   questionNumber,
   totalQuestions,
   onAnswer,
-}: QuestionCardProps) {
+}: Props) {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
   useEffect(() => {
@@ -42,7 +42,7 @@ export default function QuestionCard({
 
       <div className="space-y-3">
         {questionData.options.map((option, index) => {
-          let bgColor = "bg-green-700 text-white";
+          let bgColor = "bg-green-600 text-white";
 
           if (selectedOption) {
             if (option === questionData.answer) {
@@ -50,7 +50,7 @@ export default function QuestionCard({
             } else if (option === selectedOption) {
               bgColor = "bg-red-500 text-white";
             } else {
-              bgColor = "bg-green-700 text-white opacity-60";
+              bgColor = "bg-green-600 text-white opacity-60";
             }
           }
 

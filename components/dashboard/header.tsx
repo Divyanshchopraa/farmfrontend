@@ -10,7 +10,7 @@ export function Header() {
     <header className="flex items-center justify-between px-5 py-4">
       <div>
 <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight 
-               bg-gradient-to-r from-green-400 via-emerald-500 to-lime-400 
+                from-green-400 via-emerald-500 to-lime-400 
                bg-clip-text text-transparent 
                flex items-center gap-3">
   Farm Care  

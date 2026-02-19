@@ -7,7 +7,7 @@ type ResultProps = {
 export default function ResultCard({ score, total, restart }: ResultProps) {
   return (
     <div className="text-center">
-      <h2 className="text-2xl font-bold mb-4">Quiz Completed 🎉</h2>
+      <h2 className="text-2xl font-bold mb-4">Quiz Completed</h2>
 
       <p className="text-lg mb-6">
         Your Score: <span className="text-green-600 font-semibold">{score}</span> / {total}
