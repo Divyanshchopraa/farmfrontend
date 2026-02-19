@@ -1,7 +1,7 @@
 "use client";
-
 import { useState } from "react";
 import Link from "next/link";
+import { BottomNav } from "@/components/dashboard/bottom-nav"
 
 const ACTIVITY_HISTORY = [
   { id: 1, action: "Crop health report generated", time: "2 hours ago", icon: "🌿" },
@@ -52,6 +52,7 @@ export default function ProfilePage() {
   };
 
   return (
+    <>
     <main
       className="min-h-screen px-4 py-10"
       style={{ backgroundColor: "#F3F7F4" }}
@@ -69,20 +70,6 @@ export default function ProfilePage() {
       </div>
 
       <div className="relative w-full max-w-sm mx-auto space-y-4">
-
-        {/* Back nav */}
-        <div className="flex items-center gap-2 mb-2">
-          <Link
-            href="/"
-            className="flex items-center gap-1.5 text-sm font-medium transition-opacity hover:opacity-70"
-            style={{ color: "#1F7A4D" }}
-          >
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-            </svg>
-            Back
-          </Link>
-        </div>
 
         {/* ── Avatar + Identity Card ── */}
         <div className="bg-white rounded-2xl shadow-md px-6 py-8 flex flex-col items-center text-center">
@@ -352,5 +339,7 @@ export default function ProfilePage() {
         <div className="h-4" />
       </div>
     </main>
+    <BottomNav />
+    </>
   );
 }

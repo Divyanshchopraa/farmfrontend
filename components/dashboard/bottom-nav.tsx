@@ -2,15 +2,18 @@
 
 import { useState } from "react"
 import { Home, Search, Camera, Clock, User } from "lucide-react"
+import { useRouter } from "next/navigation"
 
 const navItems = [
-  { icon: Home, label: "Home", id: "home" },
+  { icon: Home, label: "Home", id: "" },
   { icon: Camera, label: "Scan", id: "scan" },
   { icon: User, label: "Profile", id: "profile" },
 ]
 
+
 export function BottomNav() {
   const [active, setActive] = useState("home")
+  const router = useRouter();
 
   return (
     <nav
@@ -44,7 +47,7 @@ export function BottomNav() {
           return (
             <button
               key={item.id}
-              onClick={() => setActive(item.id)}
+              onClick={() => router.push(`/${item.id}`)}
               className={`flex flex-col items-center gap-0.5 py-1.5 px-3 rounded-xl transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
                 isActive
                   ? "text-primary"
