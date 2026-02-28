@@ -1,12 +1,12 @@
 "use client"
 
 import { useState } from "react"
-import { Home, Search, Camera, Clock, User } from "lucide-react"
+import { Home, Search, Camera, Clock, User, MessageCircleQuestionMark } from "lucide-react"
 import { useRouter } from "next/navigation"
 
 const navItems = [
   { icon: Home, label: "Home", id: "" },
-  { icon: Camera, label: "Scan", id: "scan" },
+  { icon: MessageCircleQuestionMark, label: "Quiz", id: "quiz" },
   { icon: User, label: "Profile", id: "profile" },
 ]
 
