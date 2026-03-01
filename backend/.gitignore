@@ -1,0 +1,8 @@
+node_modules
+build_log.txt
+build_log_2.txt
+firebase-config.json
+package-lock.json
+pnpm-lock.yaml
+.env
+.idea
